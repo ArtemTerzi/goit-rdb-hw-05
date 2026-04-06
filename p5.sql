@@ -1,14 +1,14 @@
-DROP FUNCTION IF EXISTS CalculateDiff;
+DROP FUNCTION IF EXISTS CalculateDiv;
 
 DELIMITER //
 
-CREATE FUNCTION CalculateDiff(num1 FLOAT, num2 FLOAT)
+CREATE FUNCTION CalculateDiv(num1 FLOAT, num2 FLOAT)
 RETURNS FLOAT
 DETERMINISTIC 
 NO SQL
 BEGIN
 	DECLARE result FLOAT;
-	SET result = num1/num2;
+	SET result = IF(num2 = 0, NULL, num1/num2);
 	RETURN result;
 END //
 	
